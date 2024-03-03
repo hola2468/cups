@@ -1,0 +1,16 @@
+- name: Instalar CUPS en Ubuntu
+  hosts: grupo_ejemplo
+  become: yes
+  tasks:
+    - name: Actualizar lista de paquetes
+      apt:
+        update_cache: yes
+    - name: Instalar CUPS
+      apt:
+        name: cups
+        state: present
+    - name: Reiniciar servicio CUPS
+      service:
+        name: cups
+        state: restarted
+
